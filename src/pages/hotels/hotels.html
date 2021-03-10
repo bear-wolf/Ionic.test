@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Гостиницы</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let hotel of hotels">
+      <ion-avatar item-start>
+        <img src="{{hotel.imageUrl}}">
+      </ion-avatar>
+      <h2>{{hotel.title}}</h2>
+      <p>{{hotel.address}}</p>
+    </button>
+  </ion-list>
+</ion-content>

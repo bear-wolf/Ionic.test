@@ -1,0 +1,29 @@
+[
+  {
+    "image": "https://t-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg",
+    "title": "Sofiya",
+    "description": "Sofiya",
+    "rent": 100,
+    "parking": true,
+    "address": "Kyiv, prospect Mura",
+    "phone": "38 097 2457563"
+  },
+  {
+    "image": "https://t-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg",
+    "title": "Sofiya",
+    "description": "Sofiya",
+    "rent": 100,
+    "parking": true,
+    "address": "Kyiv, prospect Mura",
+    "phone": "38 097 2457563"
+  },
+  {
+    "image": "https://t-cf.bstatic.com/images/hotel/max1024x768/681/68184730.jpg",
+    "title": "Sofiya",
+    "description": "Sofiya",
+    "rent": 100,
+    "parking": true,
+    "address": "Kyiv, prospect Mura",
+    "phone": "38 097 2457563"
+  }
+]
