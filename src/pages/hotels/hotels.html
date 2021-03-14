@@ -8,8 +8,27 @@
 </ion-header>
 
 <ion-content>
+  <button ion-button (click)="showFilter = !showFilter">Фильтровать</button>
+
+  <ion-item-group *ngIf="showFilter">
+    <ion-item>
+      <!--      https://ionicframework.com/docs/v3/components/#inputs-->
+      <ion-label stacked>Введите минимально допустимую цену</ion-label>
+      <ion-input type="number" placeholder="от {{minDefaultPrice}}" (input)="changeMinValue($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Введите максимально допустимую цену</ion-label>
+      <ion-input type="number" placeholder="до {{maxDefaultPrice}}" (input)="changeMaxValue($event)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Показать только готели с парковкой</ion-label>
+      <!--      https://ionicframework.com/docs/v3/components/#checkbox-->
+      <ion-checkbox color="dark" [checked]="isParkingZone" (ionChange)="changeParkingZone($event)"></ion-checkbox>
+    </ion-item>
+  </ion-item-group>
+
   <ion-list>
-    <button ion-item *ngFor="let hotel of hotels">
+    <button ion-item *ngFor="let hotel of filterHotels(hotels)" (click)="openHotelDetails($event, hotel)">
       <ion-avatar item-start>
         <img src="{{hotel.imageUrl}}">
       </ion-avatar>

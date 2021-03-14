@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import {IonicApp, IonicErrorHandler, IonicModule, IonicPageModule} from 'ionic-angular';
+import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -8,30 +8,27 @@ import { HotelsPage } from '../pages/hotels/hotels';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {ListPage} from "../pages/list/list";
-//import {DetailPage} from "../pages/detail/detail";
 import {HotelService} from "../shared/services/hotel.service";
-import {ListPageModule} from "../pages/list/list.module";
+import {DetailPage} from "../pages/detail/detail";
+import {FilterPipe} from "../shared/pipes/filter.pipe";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    //DetailPage,
-    HotelsPage
+    DetailPage,
+    HotelsPage,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    //AppRoutingModule,
     IonicModule.forRoot(MyApp),
-    ListPageModule,
-    // IonicPageModule.forChild(DetailPage)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    //DetailPage,
+    DetailPage,
     HotelsPage
   ],
   providers: [

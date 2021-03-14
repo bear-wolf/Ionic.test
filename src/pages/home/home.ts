@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {ListPage} from "../list/list";
+import {HotelsPage} from "../hotels/hotels";
 
 @Component({
   selector: 'page-home',
@@ -13,6 +13,6 @@ export class HomePage {
   }
 
   public goToRoute() {
-    this.navCtrl.push(ListPage);
+    this.navCtrl.push(HotelsPage);
   }
 }
