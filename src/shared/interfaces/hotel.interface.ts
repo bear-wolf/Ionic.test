@@ -1,8 +1,8 @@
 export interface HotelInterface {
-  imageUrl?: string;
   title: string;
+  image?: string;
   description?: string;
-  roomCost?: number;
+  cost?: number;
   hasParking?: boolean;
   address?: string;
   phone?: string;

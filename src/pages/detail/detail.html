@@ -4,25 +4,30 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{hotel.description}}</ion-title>
+    <ion-title>{{hotel.title}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h3>{{hotel.title}}</h3>
-  <ion-img [src]="hotel.imageUrl" class="hotelPicture"></ion-img>
+  <table>
+    <tr>
+      <td>
+        <ion-img [src]="hotel.image" class="hotelPicture"></ion-img>
+      </td>
+      <td>
+        <h3>{{hotel.description}}</h3>
+        <h4>Информация о гостинице:</h4>
+        <p *ngIf="hotel.hasParking">
+          Есть парковочная зона
+        </p>
+        <p *ngIf="!hotel.hasParking">Нет парковочной зоны</p>
 
-  <h4>Информация о гостинице:</h4>
-  <p *ngIf="hotel.hasParking; else noParkingBlock">
-    Есть парковочная зона
-  </p>
-  <ng-template #noParkingBlock>
-    <p>Нет парковочной зоны</p>
-  </ng-template>
-
-  <p>Стоимость за сутки: {{hotel.roomCost}}</p>
-  <p>Местонахождение: {{hotel.address}}</p>
-  <p>Телефон: {{hotel.phone}}</p>
+        <p>Стоимость за сутки: {{hotel.cost}}</p>
+        <p>Местонахождение: {{hotel.address}}</p>
+        <p>Телефон: {{hotel.phone}}</p>
+      </td>
+    </tr>
+  </table>
 </ion-content>

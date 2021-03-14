@@ -3,34 +3,38 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+
     <ion-title>Гостиницы</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="showFilter = !showFilter">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <button ion-button (click)="showFilter = !showFilter">Фильтровать</button>
 
   <ion-item-group *ngIf="showFilter">
     <ion-item>
-      <!--      https://ionicframework.com/docs/v3/components/#inputs-->
-      <ion-label stacked>Введите минимально допустимую цену</ion-label>
-      <ion-input type="number" placeholder="от {{minDefaultPrice}}" (input)="changeMinValue($event)"></ion-input>
+      <ion-label stacked>Минимальная цена от: </ion-label>
+      <ion-input type="number" placeholder="{{minDefaultPrice}}" (input)="changeMinValue($event)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Введите максимально допустимую цену</ion-label>
-      <ion-input type="number" placeholder="до {{maxDefaultPrice}}" (input)="changeMaxValue($event)"></ion-input>
+      <ion-label stacked>Максимальная цена до: </ion-label>
+      <ion-input type="number" placeholder="{{maxDefaultPrice}}" (input)="changeMaxValue($event)"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Показать только готели с парковкой</ion-label>
-      <!--      https://ionicframework.com/docs/v3/components/#checkbox-->
+      <ion-label>Готели с парковкой</ion-label>
       <ion-checkbox color="dark" [checked]="isParkingZone" (ionChange)="changeParkingZone($event)"></ion-checkbox>
     </ion-item>
   </ion-item-group>
 
   <ion-list>
-    <button ion-item *ngFor="let hotel of filterHotels(hotels)" (click)="openHotelDetails($event, hotel)">
+    <button ion-item *ngFor="let hotel of filterHotels(hotelService.getHotels())" (click)="openHotelDetails($event, hotel)">
       <ion-avatar item-start>
-        <img src="{{hotel.imageUrl}}">
+        <img src="{{hotel.image}}">
       </ion-avatar>
       <h2>{{hotel.title}}</h2>
       <p>{{hotel.address}}</p>
