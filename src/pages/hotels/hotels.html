@@ -33,7 +33,7 @@
     </ion-item>
     <ion-item>
       <ion-label>Готели с парковкой</ion-label>
-      <ion-checkbox color="dark" [checked]="isParkingZone" (ionChange)="changeParkingZone($event)"></ion-checkbox>
+      <ion-checkbox color="dark" [checked]="isParkingZone" (ionChange)="isParkingZone = $event.value"></ion-checkbox>
     </ion-item>
   </ion-item-group>
 

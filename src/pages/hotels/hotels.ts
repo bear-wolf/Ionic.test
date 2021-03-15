@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {HotelInterface} from "../../shared/interfaces/hotel.interface";
 import {DetailPage} from "../detail/detail";
-import {BaseInput} from "ionic-angular/util/base-input";
 import {HotelService} from "../../shared/services/hotel.service";
 
 @Component({
@@ -24,16 +23,9 @@ export class HotelsPage {
     this.maxCost = this.hotelService.getHotels().reduce((acc, curr) => acc.cost > curr.cost ? acc : curr).cost;
 
     this.minCost = this.hotelService.getHotels().reduce((acc, curr) => acc.cost < curr.cost ? acc : curr).cost;
-  }
 
-
-  ngOnInit(): void {
     this.inputMax = this.maxCost;
     this.inputMin = this.minCost;
-  }
-
-  public changeParkingZone(event: BaseInput<boolean>) {
-    this.isParkingZone = event.value;
   }
 
   public getHotelsSort(hotels: HotelInterface[]): HotelInterface[] {
