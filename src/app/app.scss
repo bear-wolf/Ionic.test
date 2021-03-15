@@ -14,3 +14,28 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.content-block{
+  background: lightgray;
+}
+
+.fs-20{
+  font-size: 20px;
+}
+
+.fs-16{
+  font-size: 16px;
+}
+
+.m-auto{
+  margin: 0 auto;
+}
+
+.d-block{
+  display: block;
+}
+
+.d-flex-column{
+  display: flex;
+  flex-direction: column;
+}

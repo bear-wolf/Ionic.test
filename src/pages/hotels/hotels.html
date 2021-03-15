@@ -14,16 +14,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content-block">
 
   <ion-item-group *ngIf="showFilter">
     <ion-item>
-      <ion-label stacked>Минимальная цена от: </ion-label>
-      <ion-input type="number" placeholder="{{minDefaultPrice}}" (input)="changeMinValue($event)"></ion-input>
+      <ion-label
+        stacked>Мин. цена от: </ion-label>
+      <ion-input type="number"
+                 (input)="onChangeMinCost($event)"
+                 placeholder="{{inputMin}}"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Максимальная цена до: </ion-label>
-      <ion-input type="number" placeholder="{{maxDefaultPrice}}" (input)="changeMaxValue($event)"></ion-input>
+      <ion-label
+        stacked>Макс. цена до: </ion-label>
+      <ion-input type="number"
+                 (input)="onChangeMaxCost($event)"
+                 placeholder="{{inputMax}}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Готели с парковкой</ion-label>
@@ -32,12 +38,15 @@
   </ion-item-group>
 
   <ion-list>
-    <button ion-item *ngFor="let hotel of filterHotels(hotelService.getHotels())" (click)="openHotelDetails($event, hotel)">
+    <button ion-item *ngFor="let hotel of getHotelsSort(hotelService.getHotels())"
+            (click)="goToDetail(hotel, $event)">
+      <div>
+        <h2>{{hotel.title}}</h2>
+        <p>{{hotel.address}}</p>
+      </div>
       <ion-avatar item-start>
         <img src="{{hotel.image}}">
       </ion-avatar>
-      <h2>{{hotel.title}}</h2>
-      <p>{{hotel.address}}</p>
     </button>
   </ion-list>
 </ion-content>

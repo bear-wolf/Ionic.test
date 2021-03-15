@@ -10,53 +10,66 @@ import {HotelService} from "../../shared/services/hotel.service";
   templateUrl: 'hotels.html'
 })
 export class HotelsPage {
-  public minDefaultPrice: number;
-  public maxDefaultPrice: number;
   public isParkingZone: boolean = false;
-  public enteredPriceMin: number;
-  public enteredPriceMax: number;
+  public inputMin: number;
+  public inputMax: number;
   public showFilter: boolean = false;
+  public minCost: number;
+  public maxCost: number;
 
   constructor(
     public navCtrl: NavController,
     public hotelService: HotelService) {
 
-    this.maxDefaultPrice = this.hotelService.getHotels().reduce((acc, curr) => acc.cost > curr.cost ? acc : curr).cost;
+    this.maxCost = this.hotelService.getHotels().reduce((acc, curr) => acc.cost > curr.cost ? acc : curr).cost;
 
-    this.minDefaultPrice = this.hotelService.getHotels().reduce((acc, curr) => acc.cost < curr.cost ? acc : curr).cost;
+    this.minCost = this.hotelService.getHotels().reduce((acc, curr) => acc.cost < curr.cost ? acc : curr).cost;
   }
 
 
   ngOnInit(): void {
-    this.enteredPriceMax = this.maxDefaultPrice;
-    this.enteredPriceMin = this.minDefaultPrice;
+    this.inputMax = this.maxCost;
+    this.inputMin = this.minCost;
   }
 
-  public changeMaxValue(event: UIEvent): void { // получаем изменяем максимальное значения цены
-    const target = event.target as HTMLInputElement;
-    this.enteredPriceMax = target.value === '' ? this.maxDefaultPrice : +target.value
-  }
-
-  public changeMinValue(event: UIEvent): void { // получаем изменяем минимальное значения цены
-    const target = event.target as HTMLInputElement;
-    this.enteredPriceMin = target.value === '' ? this.minDefaultPrice : +target.value
-  }
-
-  public changeParkingZone(event: BaseInput<boolean>): void { // чекбокс необходимости парковки
+  public changeParkingZone(event: BaseInput<boolean>) {
     this.isParkingZone = event.value;
   }
 
-  public filterHotels(hotels: HotelInterface[]): HotelInterface[] { // фильтр готелей
+  public getHotelsSort(hotels: HotelInterface[]): HotelInterface[] {
     return hotels.filter(hotel => {
-      return this.isParkingZone ?
-        hotel.cost >= this.enteredPriceMin && hotel.cost <= this.enteredPriceMax && hotel.hasParking :
-        hotel.cost >= this.enteredPriceMin && hotel.cost <= this.enteredPriceMax
+      let value = null;
+      if (this.isParkingZone) {
+        value = hotel.cost >= this.inputMin && hotel.cost <= this.inputMax && hotel.hasParking;
+      } else {
+        value = hotel.cost >= this.inputMin && hotel.cost <= this.inputMax;
+      }
+
+      return value;
     })
   }
 
-
-  public openHotelDetails(event: MouseEvent, detail: HotelInterface): void {
+  public goToDetail(detail: HotelInterface, event: any): void {
     this.navCtrl.push(DetailPage, {detail});
   }
 
+  public onChangeMinCost(event: any) {
+    let data = event.target as HTMLInputElement;
+
+    if (data.value === '') {
+      this.inputMin = this.minCost;
+    } else {
+      this.inputMin = +data.value;
+    }
+  }
+
+  public onChangeMaxCost(data: any): void {
+    data = data.target as HTMLInputElement;
+
+    if (data.value === '') {
+      this.inputMax = this.maxCost;
+    } else {
+      this.inputMax = +data.value;
+    }
+  }
 }

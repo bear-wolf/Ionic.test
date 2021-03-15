@@ -1,11 +1,30 @@
 page-detail {
-  .hotelPicture {
-    margin-right: 30px;
+  .image-item {
     float: left;
     max-width: 500px;;
     contain: content;
   }
-}
-page-hotel {
 
+  ion-img{
+    border-radius: 50px;
+  }
+
+  .title{
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+
+  .content-block-item{
+    max-width: 500px;
+  }
+
+  .options{
+    padding-left: 50px;
+    li{
+      padding-bottom: 25px;
+    }
+  }
 }

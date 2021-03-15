@@ -10,24 +10,19 @@
 </ion-header>
 
 
-<ion-content padding>
-  <table>
-    <tr>
-      <td>
-        <ion-img [src]="hotel.image" class="hotelPicture"></ion-img>
-      </td>
-      <td>
-        <h3>{{hotel.description}}</h3>
-        <h4>Информация о гостинице:</h4>
-        <p *ngIf="hotel.hasParking">
-          Есть парковочная зона
-        </p>
-        <p *ngIf="!hotel.hasParking">Нет парковочной зоны</p>
-
-        <p>Стоимость за сутки: {{hotel.cost}}</p>
-        <p>Местонахождение: {{hotel.address}}</p>
-        <p>Телефон: {{hotel.phone}}</p>
-      </td>
-    </tr>
-  </table>
+<ion-content class="content-block d-flex-column" padding>
+  <div class="d-flex-column content-block-item m-auto">
+    <ion-img [src]="hotel.image" class="image-item"></ion-img>
+    <div class="context">
+      <span class="title fs-20">{{hotel.description}}</span>
+      <span class="d-block fs-16">Информация о гостинице:</span>
+      <ul class="options">
+        <li *ngIf="hotel.hasParking"> Есть парковочная зона</li>
+        <li *ngIf="!hotel.hasParking"> Нет парковочной зоны</li>
+        <li>Стоимость за сутки: <span>{{hotel.cost}}</span></li>
+        <li>Местонахождение: <span>{{hotel.address}}</span></li>
+        <li>Телефон: <span><a href="tel:{{hotel.phone}}">{{hotel.phone}}</a></span></li>
+      </ul>
+    </div>
+  </div>
 </ion-content>

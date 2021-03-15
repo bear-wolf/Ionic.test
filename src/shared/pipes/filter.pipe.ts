@@ -9,10 +9,10 @@ export class FilterPipe implements PipeTransform {
   transform(hotels: HotelInterface[], filterValues: FilterInterface) {
     if (hotels.length && filterValues) {
       if (filterValues.from || filterValues.to || filterValues.parking) {
-        return hotels.filter((hotel: HotelInterface) => filterValues.from ? hotel.roomCost >= filterValues.from : true)
+        return hotels.filter((hotel: HotelInterface) => filterValues.from ? hotel.cost >= filterValues.from : true)
           .filter((hotel: HotelInterface) => {
             if (filterValues.to) {
-              return hotel.roomCost <= filterValues.to;
+              return hotel.cost <= filterValues.to;
             }
             return true;
           })
