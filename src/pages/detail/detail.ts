@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
 import {HotelInterface} from "../../shared/interfaces/hotel.interface";
 
 @Component({
@@ -14,6 +14,5 @@ export class DetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HotelPage');
   }
 }
